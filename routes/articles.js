@@ -11,8 +11,8 @@ import {
 
 const router = Router();
 
-router.get(getArticles);
-router.post(validateArticle, createArticle);
-router.delete(validateArticleId, deleteArticle);
+router.get("/", getArticles);
+router.post("/", validateArticle, createArticle);
+router.delete("/:articleId", validateArticleId, deleteArticle);
 
 export default router;

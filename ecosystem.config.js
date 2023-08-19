@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   apps: [{ name: "news-explorer-backend", script: "npm start" }],
   // Deployment Configuration
   deploy: {

@@ -33,6 +33,7 @@ const articleSchema = new Schema({
   image: {
     type: String,
     required: true,
+    default: "https://placehold.co/600x400.png?text=NewsExplorer",
     validate: {
       validator: (v) => validator.isURL(v),
       message: "Article image link must be a valid URL",

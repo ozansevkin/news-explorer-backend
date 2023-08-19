@@ -1,4 +1,4 @@
-import { defaultErrorMessage } from "../utils/constants";
+import { defaultErrorMessage } from "../utils/constants.js";
 
 const errorHandler = (err, req, res, next) => {
   // Log the error

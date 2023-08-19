@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import validator from "validator";
-import { articleMessages as messages } from "../utils/constants";
+import { articleMessages as messages } from "../utils/constants.js";
 
 const articleSchema = new Schema({
   keyword: {

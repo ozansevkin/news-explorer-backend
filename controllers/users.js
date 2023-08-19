@@ -4,7 +4,7 @@ import User from "../models/user.js";
 import NotFoundError from "../errors/NotFound.js";
 import ConflictError from "../errors/Conflict.js";
 import BadRequestError from "../errors/BadRequest.js";
-import JWT_SECRET from "../utils/config.js";
+import { JWT_SECRET } from "../utils/config.js";
 
 export const getCurrentUser = (req, res, next) => {
   const { _id: userId } = req.user;

@@ -8,12 +8,13 @@ import router from "./routes/index.js";
 import { requestLogger, errorLogger } from "./middlewares/logger.js";
 import limiter from "./utils/limiter.js";
 import errorHandler from "./middlewares/errorHandler.js";
+import { DB_HOST } from "./utils/config.js";
 
 const { PORT = 3001 } = process.env;
 
 const app = express();
 
-mongoose.connect("mongodb://127.0.0.1:27017/news-explorer_db").catch((err) => {
+mongoose.connect(`mongodb://${DB_HOST}`).catch((err) => {
   console.error(`Error on initial connection to MongoDB: ${err}`);
 });
 

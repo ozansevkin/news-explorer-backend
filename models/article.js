@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import validator from "validator";
+import { articleMessages as messages } from "../utils/constants";
 
 const articleSchema = new Schema({
   keyword: {
@@ -27,7 +28,7 @@ const articleSchema = new Schema({
     required: true,
     validate: {
       validator: (v) => validator.isURL(v),
-      message: "Article link must be a valid URL",
+      message: messages.error.validator.url.link,
     },
   },
   image: {
@@ -36,7 +37,7 @@ const articleSchema = new Schema({
     default: "https://placehold.co/600x400.png?text=NewsExplorer",
     validate: {
       validator: (v) => validator.isURL(v),
-      message: "Article image link must be a valid URL",
+      message: messages.error.validator.url.image,
     },
   },
   owner: {

@@ -5,12 +5,13 @@ import NotFoundError from "../errors/NotFound.js";
 import ConflictError from "../errors/Conflict.js";
 import BadRequestError from "../errors/BadRequest.js";
 import { JWT_SECRET } from "../utils/config.js";
+import { userMessages as messages } from "../utils/constants.js";
 
 export const getCurrentUser = (req, res, next) => {
   const { _id: userId } = req.user;
 
   User.findById(userId)
-    .orFail(new NotFoundError("No user found"))
+    .orFail(new NotFoundError(messages.error.notFound))
     .then((user) => res.send({ user }))
     .catch(next);
 };
@@ -21,9 +22,7 @@ export const createUser = (req, res, next) => {
   User.findOne({ email })
     .then((userExists) => {
       if (userExists) {
-        return next(
-          new ConflictError("Entered an email address already exists."),
-        );
+        return next(new ConflictError(messages.error.conflict));
       }
 
       return bcrypt.hash(password, 10).then((hash) =>
@@ -36,7 +35,7 @@ export const createUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === "ValidationError") {
-        next(new BadRequestError("Invalid user data sent to server."));
+        next(new BadRequestError(messages.error.badRequest));
       } else {
         next(err);
       }

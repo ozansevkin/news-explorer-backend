@@ -1,13 +1,14 @@
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../utils/config.js";
 import UnauthorizedError from "../errors/Unauthorized.js";
+import { authErrorMessage } from "../utils/constants.js";
 
 const auth = (req, res, next) => {
   try {
     const authorization = req.get("authorization");
 
     if (!authorization) {
-      throw new UnauthorizedError("Authorization token is missing.");
+      throw new UnauthorizedError(authErrorMessage);
     }
 
     const token = authorization.replace("Bearer ", "");

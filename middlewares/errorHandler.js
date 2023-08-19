@@ -1,3 +1,5 @@
+import { defaultErrorMessage } from "../utils/constants";
+
 const errorHandler = (err, req, res, next) => {
   // Log the error
   // console.error(err);
@@ -8,7 +10,7 @@ const errorHandler = (err, req, res, next) => {
   let { message } = err;
 
   if (statusCode === 500) {
-    message = "An error occurred on the server";
+    message = defaultErrorMessage;
   }
 
   return res.status(statusCode).send({ message });

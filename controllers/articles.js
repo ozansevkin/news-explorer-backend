@@ -2,6 +2,7 @@ import Article from "../models/article.js";
 import ForbiddenError from "../errors/Forbidden.js";
 import NotFoundError from "../errors/NotFound.js";
 import BadRequestError from "../errors/BadRequest.js";
+import { articleMessages as messages } from "../utils/constants.js";
 
 export const getArticles = (req, res, next) => {
   const { _id: owner } = req.user;
@@ -21,7 +22,7 @@ export const createArticle = (req, res, next) => {
     .then((article) => res.status(201).send({ article }))
     .catch((err) => {
       if (err.name === "ValidationError") {
-        next(new BadRequestError("Invalid article data sent to server."));
+        next(new BadRequestError(messages.error.badRequest));
       } else {
         next(err);
       }
@@ -34,19 +35,17 @@ export const deleteArticle = (req, res, next) => {
 
   Article.findById(articleId)
     .select("+owner")
-    .orFail(new NotFoundError("No article found with the provided id"))
+    .orFail(new NotFoundError(messages.error.notFound))
     .then((article) => {
       const ownerId = String(article.owner);
 
       if (ownerId !== userId) {
-        return next(
-          new ForbiddenError("User is not permitted to delete this article"),
-        );
+        return next(new ForbiddenError(messages.error.forbidden));
       }
 
       return article
         .deleteOne()
-        .then(() => res.send({ message: "Article deleted" }));
+        .then(() => res.send({ message: messages.response.deleted }));
     })
     .catch(next);
 };

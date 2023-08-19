@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 import validator from "validator";
 import bcrypt from "bcrypt";
 import UnauthorizedError from "../errors/Unauthorized.js";
+import { userMessages as messages } from "../utils/constants.js";
 
 const userSchema = new Schema(
   {
@@ -18,7 +19,7 @@ const userSchema = new Schema(
       unique: true,
       validate: {
         validator: (v) => validator.isEmail(v),
-        message: "You must enter a valid email",
+        message: messages.error.validator.email,
       },
     },
     password: {
@@ -30,9 +31,7 @@ const userSchema = new Schema(
   {
     statics: {
       findByCredentials(email, password) {
-        const error = new UnauthorizedError(
-          "Entered email and/or password is wrong",
-        );
+        const error = new UnauthorizedError(messages.error.unauthorized);
 
         return this.findOne({ email })
           .select("+password")

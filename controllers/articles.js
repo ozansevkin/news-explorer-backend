@@ -33,6 +33,7 @@ export const deleteArticle = (req, res, next) => {
   const { _id: userId } = req.user;
 
   Article.findById(articleId)
+    .select("+owner")
     .orFail(new NotFoundError("No article found with the provided id"))
     .then((article) => {
       const ownerId = String(article.owner);

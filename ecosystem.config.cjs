@@ -8,7 +8,7 @@ module.exports = {
       ref: "origin/stage-backend",
       repo: "https://github.com/ozansevkin/news-explorer-backend.git",
       path: "/home/sevkinozan/news-explorer/backend",
-      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.js",
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.cjs",
     },
   },
 };

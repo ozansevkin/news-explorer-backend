@@ -18,7 +18,7 @@
     "format": "npx prettier . --write",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint --fix .",
-    "deploy": "pm2 deploy production"
+    "deploy": "pm2 deploy ecosystem.config.cjs production"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

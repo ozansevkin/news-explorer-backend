@@ -35,6 +35,7 @@ const userSchema = new Schema(
         );
 
         return this.findOne({ email })
+          .select("+password")
           .orFail(error)
           .then((user) =>
             bcrypt.compare(password, user.password).then((matched) => {

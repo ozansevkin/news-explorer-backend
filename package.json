@@ -1,0 +1,45 @@
+{
+  "name": "news-explorer-backend",
+  "version": "1.0.0",
+  "description": "Backend of News Explorer app",
+  "main": "app.js",
+  "type": "module",
+  "author": "Ozan Sevkin <sevkinozan@gmail.com> (https://ozansevkin.dev)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ozansevkin/news-explorer-backend.git"
+  },
+  "homepage": "https://api.newsexplorer.ozansevkin.dev/",
+  "license": "ISC",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "npx prettier . --write",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint --fix .",
+    "deploy": "pm2 deploy ecosystem.config.cjs production"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "celebrate": "^15.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.9.0",
+    "express-winston": "^4.2.0",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.3",
+    "validator": "^13.11.0",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.2"
+  }
+}

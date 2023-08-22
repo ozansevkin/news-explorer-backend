@@ -5,7 +5,7 @@ module.exports = {
     production: {
       user: "sevkinozan",
       host: ["34.168.61.220"],
-      ref: "origin/stage-backend",
+      ref: "origin/main",
       repo: "https://github.com/ozansevkin/news-explorer-backend.git",
       path: "/home/sevkinozan/news-explorer/backend",
       "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.cjs",

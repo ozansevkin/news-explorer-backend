@@ -10,7 +10,7 @@ import limiter from "./utils/limiter.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import { DB_HOST } from "./utils/config.js";
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3002 } = process.env;
 
 const app = express();
 

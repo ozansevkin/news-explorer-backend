@@ -18,8 +18,7 @@
     "format": "npx prettier . --write",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint --fix .",
-    "deploy": "scp -r ./out/* sevkinozan@newsexplorer.ozansevkin.dev:/home/sevkinozan/news-explorer/backend",
-    "deploy:incloud": "pm2 deploy ecosystem.config.cjs production"
+    "deploy": "pm2 deploy ecosystem.config.cjs production"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
